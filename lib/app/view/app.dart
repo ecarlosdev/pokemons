@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pokemons/home/home.dart';
 import 'package:responsive/responsive.dart';
+import 'package:theme/theme.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -11,14 +12,13 @@ class App extends StatelessWidget {
       smallDesignSize: const Size(360, 640),
       mediumDesignSize: const Size(768, 1024),
       largeDesignSize: const Size(1440, 1024),
-      child: MaterialApp(
-        theme: ThemeData(
-          appBarTheme: AppBarTheme(
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          ),
-          useMaterial3: true,
-        ),
-        home: const HomePage(),
+      child: Builder(
+        builder: (context) {
+          return MaterialApp(
+            theme: AppTheme.buildDarkTheme(context),
+            home: const HomePage(),
+          );
+        },
       ),
     );
   }

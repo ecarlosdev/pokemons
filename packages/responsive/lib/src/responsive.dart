@@ -22,7 +22,8 @@ class ResponsiveConfiguration extends InheritedWidget {
 
   /// Returns the [ResponsiveConfiguration] of the closest [BuildContext].
   static ResponsiveConfiguration of(BuildContext context) {
-    return context.dependOnInheritedWidgetOfExactType<ResponsiveConfiguration>()!;
+    return context
+        .dependOnInheritedWidgetOfExactType<ResponsiveConfiguration>()!;
   }
 
   @override
