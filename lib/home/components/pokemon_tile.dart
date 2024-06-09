@@ -1,5 +1,6 @@
 import 'package:assets/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:pokemons/pokemon_detail/pokemon_detail.dart';
 import 'package:pokemons/shared/shared.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
@@ -15,7 +16,9 @@ class PokemonTileComponent extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            PokemonDetailRoute(context: context).push();
+          },
           child: Container(
             padding: const EdgeInsets.all(_tileSafeArea),
             decoration: BoxDecoration(
@@ -69,7 +72,7 @@ class PokemonTileComponent extends StatelessWidget {
               maxWidth: 200.responsive(context),
             ),
             child: Text(
-              "Squirtle",
+              'Squirtle',
               style: context.textStyle.body.copyWith(
                 fontWeight: FontWeight.w700,
                 overflow: TextOverflow.ellipsis,

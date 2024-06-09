@@ -31,8 +31,9 @@ class SearchFieldComponent extends StatelessWidget {
           fillColor: context.colors.fieldBackground,
           filled: true,
           border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30.responsive(context)),
-              borderSide: BorderSide.none),
+            borderRadius: BorderRadius.circular(30.responsive(context)),
+            borderSide: BorderSide.none,
+          ),
           constraints: BoxConstraints(
             maxHeight: 40.responsive(context),
           ),

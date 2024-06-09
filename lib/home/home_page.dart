@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
                 top: constraints.maxHeight / 2 - 92.responsive(context),
                 left: constraints.maxWidth / 2 - 92.responsive(context),
                 child: ColoredBluredCircleWidget(
-                  color: const Color(0xffB57C4C),
+                  color: const Color(0xffB57C4C).withOpacity(0.4),
                   size: 184.responsive(context),
                 ),
               ),
@@ -38,7 +38,7 @@ class HomePage extends StatelessWidget {
                 top: constraints.maxHeight - constraints.maxHeight / 3,
                 right: -92.responsive(context),
                 child: ColoredBluredCircleWidget(
-                  color: const Color(0xff82B8CA),
+                  color: const Color(0xff82B8CA).withOpacity(0.4),
                   size: 184.responsive(context),
                 ),
               ),

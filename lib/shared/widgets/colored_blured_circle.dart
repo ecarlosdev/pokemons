@@ -4,12 +4,18 @@ class ColoredBluredCircleWidget extends StatelessWidget {
   const ColoredBluredCircleWidget({
     required this.color,
     required this.size,
+    this.blurRadius,
+    this.spreadRadius,
     super.key,
   });
 
   final Color color;
 
   final double size;
+
+  final double? blurRadius;
+
+  final double? spreadRadius;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +26,9 @@ class ColoredBluredCircleWidget extends StatelessWidget {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: color.withOpacity(0.45),
-            blurRadius: size / 2,
-            spreadRadius: 45,
+            color: color,
+            blurRadius: blurRadius ?? size / 2,
+            spreadRadius: spreadRadius ?? 45,
           ),
         ],
       ),
