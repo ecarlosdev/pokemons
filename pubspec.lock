@@ -358,6 +358,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.2"
+  poke_api:
+    dependency: transitive
+    description:
+      path: "packages/poke_api"
+      relative: true
+    source: path
+    version: "0.1.0+1"
   pool:
     dependency: transitive
     description:
@@ -382,6 +389,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  repositories:
+    dependency: "direct main"
+    description:
+      path: "packages/repositories"
+      relative: true
+    source: path
+    version: "0.1.0+1"
   responsive:
     dependency: "direct main"
     description:

@@ -1,6 +1,11 @@
 import 'package:pokemons/app/app.dart';
 import 'package:pokemons/bootstrap.dart';
+import 'package:repositories/repositories.dart';
 
 void main() {
-  bootstrap(() => const App());
+  bootstrap(
+    () => App(
+      pokeApi: PokeApi(),
+    ),
+  );
 }

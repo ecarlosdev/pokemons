@@ -17,6 +17,8 @@ dependencies:
     sdk: flutter
   navigation:
     path: packages/navigation
+  repositories:
+    path: packages/repositories
   responsive:
     path: packages/responsive
   theme:
