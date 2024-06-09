@@ -12,6 +12,7 @@ abstract class AppTheme {
       extensions: [
         ThemeExtensionsDark.colors,
         ThemeExtensionsDark.text(context),
+        ThemeExtensionsDark.sizes(context),
       ],
     );
   }

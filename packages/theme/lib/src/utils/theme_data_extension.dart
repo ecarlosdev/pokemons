@@ -8,4 +8,7 @@ extension ThemeDataExtension on ThemeData {
 
   /// Usage example: Theme.of(context).appText;
   ThemeTextExtension get text => extension<ThemeTextExtension>()!;
+
+  /// Usage example: Theme.of(context).appSizes;
+  ThemeSizesExtension get sizes => extension<ThemeSizesExtension>()!;
 }

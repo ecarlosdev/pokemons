@@ -11,4 +11,7 @@ extension AppThemeExtension on BuildContext {
 
   /// Usage example: context.text.headLine
   ThemeTextExtension get textStyle => theme.text;
+
+  /// Usage example: context.sizes.padding
+  ThemeSizesExtension get sizes => theme.sizes;
 }
