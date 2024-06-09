@@ -21,6 +21,7 @@ dependencies:
     path: packages/repositories
   responsive:
     path: packages/responsive
+  shared_preferences: ^2.2.3
   theme:
     path: packages/theme
 

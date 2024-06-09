@@ -8,10 +8,13 @@ import 'package:theme/theme.dart';
 class App extends StatelessWidget {
   const App({
     required this.pokeApi,
+    required this.favoritesLocalDataSource,
     super.key,
   });
 
   final PokeApi pokeApi;
+
+  final FavoritesLocalDataSource favoritesLocalDataSource;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,11 @@ class App extends StatelessWidget {
       providers: [
         RepositoryProvider(
           create: (context) => PokemonRepository(pokeApi),
+        ),
+        RepositoryProvider(
+          create: (context) => FavoritesRepositories(
+            favoritesLocalDataSource,
+          ),
         ),
       ],
       child: ResponsiveConfiguration(

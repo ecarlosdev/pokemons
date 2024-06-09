@@ -9,6 +9,7 @@ environment:
 dependencies:
   poke_api:
     path: ../poke_api
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   mocktail: ^1.0.3
