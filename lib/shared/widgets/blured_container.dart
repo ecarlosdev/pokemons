@@ -1,13 +1,13 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:responsive/responsive.dart';
 
 class BluredContainerWidget extends StatelessWidget {
   const BluredContainerWidget({
     this.height,
     this.width,
     this.margin,
+    this.padding,
     this.borderRadius,
     this.child,
     super.key,
@@ -16,6 +16,8 @@ class BluredContainerWidget extends StatelessWidget {
   final BorderRadiusGeometry? borderRadius;
 
   final EdgeInsets? margin;
+
+  final EdgeInsets? padding;
 
   final double? height;
 
@@ -27,6 +29,8 @@ class BluredContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: height,
+      width: width,
+      margin: margin,
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         borderRadius: borderRadius,
@@ -39,7 +43,7 @@ class BluredContainerWidget extends StatelessWidget {
               sigmaY: 10,
             ),
             child: Container(
-              padding: EdgeInsets.all(20.responsive(context)),
+              padding: padding,
               margin: margin,
               decoration: BoxDecoration(
                 gradient: LinearGradient(

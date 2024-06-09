@@ -2,13 +2,20 @@ import 'package:assets/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemons/pokemon_detail/pokemon_detail.dart';
 import 'package:pokemons/shared/shared.dart';
+import 'package:pokemons/shared/utils/pokemon_type_colors.dart';
+import 'package:repositories/repositories.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
 
 class PokemonTileComponent extends StatelessWidget {
-  const PokemonTileComponent({super.key});
+  const PokemonTileComponent({
+    required this.pokemon,
+    super.key,
+  });
 
   static const double _tileSafeArea = 10;
+
+  final Pokemon pokemon;
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +23,10 @@ class PokemonTileComponent extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         GestureDetector(
-          onTap: () {
-            PokemonDetailRoute(context: context).push();
-          },
+          onTap: PokemonDetailRoute(
+            context: context,
+            pokemon: pokemon,
+          ).push,
           child: Container(
             padding: const EdgeInsets.all(_tileSafeArea),
             decoration: BoxDecoration(
@@ -26,8 +34,8 @@ class PokemonTileComponent extends StatelessWidget {
               borderRadius: BorderRadius.circular(10),
               gradient: LinearGradient(
                 colors: [
-                  Colors.yellow[700]!,
-                  Colors.yellow[700]!.withOpacity(0.7),
+                  pokemon.colors.primary,
+                  pokemon.colors.primary.withOpacity(0.7),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -39,12 +47,11 @@ class PokemonTileComponent extends StatelessWidget {
           margin: EdgeInsets.only(
             bottom: 20.responsive(context),
           ),
-          child: Placeholder(
-            color: Colors.black,
-            child: SizedBox(
-              width: 130.responsive(context),
-              height: 130.responsive(context),
-            ),
+          child: Image.network(
+            pokemon.assets.image,
+            width: 135.responsive(context),
+            height: 135.responsive(context),
+            fit: BoxFit.fitHeight,
           ),
         ),
         Positioned(
@@ -72,7 +79,7 @@ class PokemonTileComponent extends StatelessWidget {
               maxWidth: 200.responsive(context),
             ),
             child: Text(
-              'Squirtle',
+              pokemon.name,
               style: context.textStyle.body.copyWith(
                 fontWeight: FontWeight.w700,
                 overflow: TextOverflow.ellipsis,
