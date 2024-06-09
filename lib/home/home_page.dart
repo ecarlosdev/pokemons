@@ -1,7 +1,7 @@
 import 'package:assets/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:pokemons/home/components/components.dart';
-import 'package:pokemons/home/widget/widget.dart';
+import 'package:pokemons/shared/widgets/widgets.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
 
