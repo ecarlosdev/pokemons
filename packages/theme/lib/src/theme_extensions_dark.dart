@@ -36,6 +36,7 @@ abstract class ThemeExtensionsDark {
         package: 'theme',
         fontFamily: 'Poppins',
         color: colors.onBackground,
+        fontWeight: FontWeight.w700,
         fontSize: 40.responsive(context),
       ),
       body: TextStyle(
@@ -48,12 +49,14 @@ abstract class ThemeExtensionsDark {
         package: 'theme',
         fontFamily: 'Poppins',
         color: colors.onBackground,
+        fontWeight: FontWeight.w700,
         fontSize: 20.responsive(context),
       ),
       chips: TextStyle(
         package: 'theme',
         fontFamily: 'Poppins',
         color: colors.onBackground,
+        fontWeight: FontWeight.w400,
         fontSize: 16.responsive(context),
       ),
       field: TextStyle(
