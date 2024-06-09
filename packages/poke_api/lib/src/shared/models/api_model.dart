@@ -1,0 +1,3 @@
+class ApiModel {
+  const ApiModel();
+}
