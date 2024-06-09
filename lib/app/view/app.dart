@@ -9,7 +9,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveConfiguration(
-      smallDesignSize: const Size(360, 640),
+      smallDesignSize: const Size(428, 926),
       mediumDesignSize: const Size(768, 1024),
       largeDesignSize: const Size(1440, 1024),
       child: Builder(
