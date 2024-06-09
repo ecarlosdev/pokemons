@@ -29,6 +29,7 @@ class PokemonDetailRoute extends BaseRouteBuilder<void> {
           create: (context) {
             final cubit = PokemonDetailsCubit(
               pokemonRepository: super.context.read(),
+              favoritesRepositories: super.context.read(),
             );
             if (pokemon != null) {
               cubit.loadWidModel(pokemon!);

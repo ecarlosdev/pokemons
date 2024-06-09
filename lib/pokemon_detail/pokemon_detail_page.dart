@@ -43,11 +43,25 @@ class _PokemonDetailPageState extends State<PokemonDetailPage>
           },
         ),
         actions: [
-          FavoriteButtonComponent(
-            isFavorite: true,
-            size: 36.responsive(context),
-            onTap: () {},
-            margin: EdgeInsets.only(right: context.sizes.bodySafeArea),
+          BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
+            builder: (context, state) {
+              final isFavorite = state.isFavorite;
+              final pokemon = state.pokemon;
+              return FavoriteButtonComponent(
+                isFavorite: isFavorite,
+                size: 36.responsive(context),
+                onTap: () {
+                  if (pokemon == null) return;
+                  final cubit = context.read<PokemonDetailsCubit>();
+                  if (isFavorite) {
+                    cubit.removeFavorite(pokemon.id);
+                  } else {
+                    cubit.addFavorite(pokemon.id);
+                  }
+                },
+                margin: EdgeInsets.only(right: context.sizes.bodySafeArea),
+              );
+            },
           ),
         ],
       ),

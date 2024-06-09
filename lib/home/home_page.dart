@@ -15,6 +15,7 @@ class HomePage extends StatelessWidget {
     return BlocProvider(
       create: (context) => HomePokemonListCubit(
         pokemonRepository: context.read(),
+        favoritesRepositories: context.read(),
       )..load(),
       child: const HomePageView(),
     );

@@ -7,6 +7,7 @@ class HomePokemonListState {
     required this.nextLimit,
     required this.pokemons,
     required this.loadNextStatus,
+    required this.favorites,
   });
 
   factory HomePokemonListState.initial() {
@@ -16,6 +17,7 @@ class HomePokemonListState {
       nextOffset: 0,
       pokemons: [],
       loadNextStatus: LoadNextStatus.initial,
+      favorites: {},
     );
   }
 
@@ -29,12 +31,15 @@ class HomePokemonListState {
 
   final LoadNextStatus loadNextStatus;
 
+  final Set<int> favorites;
+
   HomePokemonListState copyWith({
     HomePokemonListStatus? status,
     int? nextOffset,
     int? nextLimit,
     List<Pokemon>? pokemons,
     LoadNextStatus? loadNextStatus,
+    Set<int>? favorites,
   }) {
     return HomePokemonListState(
       status: status ?? this.status,
@@ -42,6 +47,7 @@ class HomePokemonListState {
       nextLimit: nextLimit ?? this.nextLimit,
       pokemons: pokemons ?? this.pokemons,
       loadNextStatus: loadNextStatus ?? this.loadNextStatus,
+      favorites: favorites ?? this.favorites,
     );
   }
 }

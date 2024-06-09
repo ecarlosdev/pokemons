@@ -1,5 +1,7 @@
 import 'package:assets/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemons/home/states/states.dart';
 import 'package:pokemons/pokemon_detail/pokemon_detail.dart';
 import 'package:pokemons/shared/shared.dart';
 import 'package:pokemons/shared/utils/pokemon_type_colors.dart';
@@ -57,10 +59,24 @@ class PokemonTileComponent extends StatelessWidget {
         Positioned(
           top: _tileSafeArea,
           left: _tileSafeArea,
-          child: FavoriteButtonComponent(
-            isFavorite: true,
-            onTap: () {},
-            size: 20.responsive(context),
+          child: BlocBuilder<HomePokemonListCubit, HomePokemonListState>(
+            builder: (context, state) {
+              final isFavorite = state.favorites.contains(pokemon.id);
+              return FavoriteButtonComponent(
+                isFavorite: isFavorite,
+                onTap: () {
+                  final cubit = context.read<HomePokemonListCubit>();
+                  if (isFavorite) {
+                    cubit.removeFavorite(pokemon.id);
+                    return;
+                  } else {
+                    cubit.addFavorite(pokemon.id);
+                  }
+                  context.read<HomePokemonListCubit>().addFavorite(pokemon.id);
+                },
+                size: 20.responsive(context),
+              );
+            },
           ),
         ),
         Positioned(

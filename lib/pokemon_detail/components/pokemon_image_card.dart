@@ -19,15 +19,15 @@ class PokemonCardImageComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
       builder: (context, state) {
+        final image = state.pokemon?.assets.image;
         return BluredContainerWidget(
           height: 316.responsive(context),
           width: width,
           margin: margin,
           borderRadius: BorderRadius.circular(30),
-          child: Image.network(
-            state.pokemon?.assets.image ?? '',
-            fit: BoxFit.fitHeight,
-          ),
+          child: image != null
+              ? Image.network(image, fit: BoxFit.fitHeight)
+              : const SizedBox(),
         );
       },
     );
