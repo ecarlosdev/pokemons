@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemons/pokemon_detail/components/components.dart';
+import 'package:pokemons/pokemon_detail/states/pokemon_details/pokemon_details.dart';
 import 'package:pokemons/shared/shared.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
@@ -32,9 +34,13 @@ class _PokemonDetailPageState extends State<PokemonDetailPage>
             Navigator.of(context).pop();
           },
         ),
-        title: Text(
-          'Pikachu',
-          style: context.textStyle.pageTitle,
+        title: BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
+          builder: (context, state) {
+            return Text(
+              state.pokemon?.name ?? '',
+              style: context.textStyle.pageTitle,
+            );
+          },
         ),
         actions: [
           FavoriteButtonComponent(

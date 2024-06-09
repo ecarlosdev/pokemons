@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemons/pokemon_detail/states/pokemon_details/pokemon_details.dart';
+import 'package:pokemons/shared/utils/pokemon_type_colors.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
 
@@ -15,26 +18,33 @@ class PokemonInfoComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: margin,
-      padding: padding,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          const PokemonDatum(
-            value: '0.4 m',
-            label: 'Height',
+    return BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
+      builder: (context, state) {
+        final typeImage = state.pokemon?.types.first.asset;
+        return Container(
+          margin: margin,
+          padding: padding,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              PokemonDatum(
+                value: "${state.pokemon?.heightInMeters.toString() ?? ''} M",
+                label: 'Height',
+              ),
+              if (typeImage != null)
+                Image(
+                  image: typeImage,
+                  width: 100.responsive(context),
+                  height: 100.responsive(context),
+                ),
+              PokemonDatum(
+                value: "${state.pokemon?.weightInKg.toString() ?? ''} KG",
+                label: 'Weight',
+              ),
+            ],
           ),
-          Placeholder(
-            fallbackHeight: 64.responsive(context),
-            fallbackWidth: 64.responsive(context),
-          ),
-          const PokemonDatum(
-            value: '7.5 kg',
-            label: 'Weight',
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }

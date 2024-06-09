@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemons/pokemon_detail/states/pokemon_details/pokemon_details.dart';
 import 'package:pokemons/shared/shared.dart';
 import 'package:responsive/responsive.dart';
 
@@ -15,12 +17,19 @@ class PokemonCardImageComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BluredContainerWidget(
-      height: 316.responsive(context),
-      width: width,
-      margin: margin,
-      borderRadius: BorderRadius.circular(30),
-      child: const Placeholder(),
+    return BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
+      builder: (context, state) {
+        return BluredContainerWidget(
+          height: 316.responsive(context),
+          width: width,
+          margin: margin,
+          borderRadius: BorderRadius.circular(30),
+          child: Image.network(
+            state.pokemon?.assets.image ?? '',
+            fit: BoxFit.fitHeight,
+          ),
+        );
+      },
     );
   }
 }
