@@ -7,6 +7,7 @@ class ThemeTextExtension extends ThemeExtension<ThemeTextExtension> {
     required this.tabBarLabel,
     required this.body,
     required this.chips,
+    required this.field,
   });
 
   final TextStyle headLine;
@@ -19,6 +20,8 @@ class ThemeTextExtension extends ThemeExtension<ThemeTextExtension> {
 
   final TextStyle chips;
 
+  final TextStyle field;
+
   @override
   ThemeExtension<ThemeTextExtension> copyWith({
     TextStyle? headLine,
@@ -26,6 +29,7 @@ class ThemeTextExtension extends ThemeExtension<ThemeTextExtension> {
     TextStyle? tabBarLabel,
     TextStyle? body,
     TextStyle? chips,
+    TextStyle? field,
   }) {
     return ThemeTextExtension(
       headLine: headLine ?? this.headLine,
@@ -33,6 +37,7 @@ class ThemeTextExtension extends ThemeExtension<ThemeTextExtension> {
       tabBarLabel: tabBarLabel ?? this.tabBarLabel,
       body: body ?? this.body,
       chips: chips ?? this.chips,
+      field: field ?? this.field,
     );
   }
 
@@ -51,6 +56,7 @@ class ThemeTextExtension extends ThemeExtension<ThemeTextExtension> {
       tabBarLabel: TextStyle.lerp(tabBarLabel, other.tabBarLabel, t)!,
       body: TextStyle.lerp(body, other.body, t)!,
       chips: TextStyle.lerp(chips, other.chips, t)!,
+      field: TextStyle.lerp(field, other.field, t)!,
     );
   }
 }
