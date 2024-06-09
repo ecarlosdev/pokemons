@@ -31,3 +31,4 @@ flutter_gen:
 flutter:
   assets:
     - assets/icons/
+    - assets/images/pokemon_types/
