@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// A custom theme extension for defining additional text style properties
+/// in your application's theme.
 class ThemeTextExtension extends ThemeExtension<ThemeTextExtension> {
+  /// Creates a [ThemeTextExtension] with the given text style properties.
   const ThemeTextExtension({
     required this.headLine,
     required this.pageTitle,
@@ -10,16 +13,22 @@ class ThemeTextExtension extends ThemeExtension<ThemeTextExtension> {
     required this.field,
   });
 
+  /// The text style for headlines.
   final TextStyle headLine;
 
+  /// The text style for page titles.
   final TextStyle pageTitle;
 
+  /// The text style for tab bar labels.
   final TextStyle tabBarLabel;
 
+  /// The text style for body text.
   final TextStyle body;
 
+  /// The text style for chip labels.
   final TextStyle chips;
 
+  /// The text style for text in input fields.
   final TextStyle field;
 
   @override

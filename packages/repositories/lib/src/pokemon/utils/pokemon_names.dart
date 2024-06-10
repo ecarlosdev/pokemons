@@ -1300,5 +1300,5 @@ const pokemonNames = [
   'ogerpon-hearthflame-mask',
   'ogerpon-cornerstone-mask',
   'terapagos-terastal',
-  'terapagos-stellar'
+  'terapagos-stellar',
 ];

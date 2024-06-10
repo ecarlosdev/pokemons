@@ -36,10 +36,12 @@ class PokemonDetailsCubit extends Cubit<PokemonDetailsState> {
   }
 
   Future<void> loadWidModel(Pokemon pokemon) async {
-    emit(PokemonDetailsState(
-      pokemon: pokemon,
-      isFavorite: await _favoritesRepositories.isFavorite(pokemon.id),
-    ));
+    emit(
+      PokemonDetailsState(
+        pokemon: pokemon,
+        isFavorite: await _favoritesRepositories.isFavorite(pokemon.id),
+      ),
+    );
   }
 
   Future<void> loadWithId(int id) async {

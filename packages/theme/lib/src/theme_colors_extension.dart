@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+/// A custom theme extension for defining additional color properties
+/// in your application's theme.
 class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
+  /// Creates a [ThemeColorsExtension] with the given color properties.
   const ThemeColorsExtension({
     required this.background,
     required this.onBackground,
@@ -9,14 +12,20 @@ class ThemeColorsExtension extends ThemeExtension<ThemeColorsExtension> {
     required this.favoriteButton,
   });
 
+  /// The background color used for the primary surfaces of your UI.
   final Color background;
 
+  /// The color used for text and icons placed on the background.
   final Color onBackground;
 
+  /// The background color used for input fields and similar elements.
   final Color fieldBackground;
 
+  /// The color used for text and icons placed on input fields and
+  /// similar elements.
   final Color onFieldBackground;
 
+  /// The color used for favorite buttons or similar interactive elements.
   final Color favoriteButton;
 
   @override

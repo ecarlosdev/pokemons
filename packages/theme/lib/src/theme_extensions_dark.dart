@@ -10,8 +10,7 @@ abstract class ThemeExtensionsDark {
     onBackground: Colors.white,
     fieldBackground: Colors.white.withAlpha(76),
     onFieldBackground: Colors.white.withAlpha(153),
-    // TODO: Change this
-    favoriteButton: Colors.red,
+    favoriteButton: const Color(0xffFE0505),
   );
 
   /// The dark theme sizes.
