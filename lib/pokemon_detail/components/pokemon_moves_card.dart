@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemons/pokemon_detail/components/components.dart';
 import 'package:pokemons/pokemon_detail/states/pokemon_details/pokemon_details.dart';
+import 'package:pokemons/shared/utils/string_utils.dart';
 import 'package:pokemons/shared/widgets/widgets.dart';
 import 'package:responsive/responsive.dart';
 
@@ -40,7 +41,7 @@ class PokemonMovesCardComponent extends StatelessWidget {
                 (index) {
                   final move = state.pokemon!.moves[index];
                   return PokemonMoveChipComponent(
-                    label: move.name,
+                    label: move.name.capitalize(),
                   );
                 },
               ),

@@ -5,6 +5,7 @@ import 'package:pokemons/home/states/states.dart';
 import 'package:pokemons/pokemon_detail/pokemon_detail.dart';
 import 'package:pokemons/shared/shared.dart';
 import 'package:pokemons/shared/utils/pokemon_type_colors.dart';
+import 'package:pokemons/shared/utils/string_utils.dart';
 import 'package:repositories/repositories.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
@@ -102,7 +103,7 @@ class PokemonTileComponent extends StatelessWidget {
               maxWidth: 200.responsive(context),
             ),
             child: Text(
-              pokemon.name,
+              pokemon.name.capitalize(),
               style: context.textStyle.body.copyWith(
                 fontWeight: FontWeight.w700,
                 overflow: TextOverflow.ellipsis,

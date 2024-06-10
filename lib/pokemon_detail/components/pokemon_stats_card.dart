@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemons/pokemon_detail/states/pokemon_details/pokemon_details.dart';
+import 'package:pokemons/shared/utils/pokemon_stat_utils.dart';
 import 'package:pokemons/shared/widgets/widgets.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
@@ -29,9 +30,9 @@ class PokemonStatsCardComponent extends StatelessWidget {
             child: Table(
               defaultVerticalAlignment: TableCellVerticalAlignment.middle,
               columnWidths: const {
-                0: FlexColumnWidth(5),
-                1: FlexColumnWidth(1),
-                2: FlexColumnWidth(6),
+                0: FlexColumnWidth(2),
+                1: FlexColumnWidth(),
+                2: FlexColumnWidth(5),
               },
               children: [
                 ...List.generate(
@@ -40,7 +41,7 @@ class PokemonStatsCardComponent extends StatelessWidget {
                     final stat = state.pokemon!.stats[index];
                     return buildTableRow(
                       context: context,
-                      title: stat.name,
+                      title: stat.label,
                       value: stat.baseStat,
                       progress: stat.baseStat / 255,
                     );

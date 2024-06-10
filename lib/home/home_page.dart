@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemons/home/components/components.dart';
 import 'package:pokemons/home/states/states.dart';
+import 'package:pokemons/i18n/translations.g.dart';
 import 'package:pokemons/shared/widgets/widgets.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
@@ -88,7 +89,7 @@ class _HomePageViewState extends State<HomePageView> {
                         child: Padding(
                           padding: EdgeInsets.all(context.sizes.bodySafeArea),
                           child: Text(
-                            'Encuentra tu Pokémon',
+                            texts.home.findYourPokemon,
                             style: context.textStyle.headLine,
                           ),
                         ),

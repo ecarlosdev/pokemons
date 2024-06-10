@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemons/i18n/translations.g.dart';
 import 'package:pokemons/pokemon_detail/components/components.dart';
 import 'package:pokemons/pokemon_detail/states/pokemon_details/pokemon_details.dart';
 import 'package:pokemons/shared/shared.dart';
+import 'package:pokemons/shared/utils/string_utils.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
 
@@ -37,7 +39,7 @@ class _PokemonDetailPageState extends State<PokemonDetailPage>
         title: BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
           builder: (context, state) {
             return Text(
-              state.pokemon?.name ?? '',
+              state.pokemon?.name.capitalize() ?? '',
               style: context.textStyle.pageTitle,
             );
           },
@@ -119,13 +121,13 @@ class _PokemonDetailPageState extends State<PokemonDetailPage>
                         vertical: 5.responsive(context),
                       ),
                       labelStyle: context.textStyle.tabBarLabel,
-                      tabs: const [
+                      tabs: [
                         Text(
-                          'Stats',
+                          texts.pokemon_details.stats.title,
                           textAlign: TextAlign.center,
                         ),
                         Text(
-                          'Moves',
+                          texts.pokemon_details.moves.title,
                           textAlign: TextAlign.center,
                         ),
                       ],

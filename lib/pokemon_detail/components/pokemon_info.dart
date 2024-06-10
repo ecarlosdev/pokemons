@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokemons/i18n/translations.g.dart';
 import 'package:pokemons/pokemon_detail/states/pokemon_details/pokemon_details.dart';
 import 'package:pokemons/shared/utils/pokemon_type_colors.dart';
 import 'package:responsive/responsive.dart';
@@ -29,7 +30,7 @@ class PokemonInfoComponent extends StatelessWidget {
             children: [
               PokemonDatum(
                 value: "${state.pokemon?.heightInMeters.toString() ?? ''} M",
-                label: 'Height',
+                label: texts.pokemon_details.height,
               ),
               if (typeImage != null)
                 Image(
@@ -39,7 +40,7 @@ class PokemonInfoComponent extends StatelessWidget {
                 ),
               PokemonDatum(
                 value: "${state.pokemon?.weightInKg.toString() ?? ''} KG",
-                label: 'Weight',
+                label: texts.pokemon_details.weight,
               ),
             ],
           ),

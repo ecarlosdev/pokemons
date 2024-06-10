@@ -22,13 +22,17 @@ dependencies:
   responsive:
     path: packages/responsive
   shared_preferences: ^2.2.3
+  slang: ^3.31.0
+  slang_flutter: ^3.31.0
   theme:
     path: packages/theme
 
 dev_dependencies:
   bloc_test: ^9.1.6
+  build_runner: ^2.4.11
   flutter_test:
     sdk: flutter
+  slang_build_runner: ^3.31.0
   very_good_analysis: ^5.1.0
 
 flutter:

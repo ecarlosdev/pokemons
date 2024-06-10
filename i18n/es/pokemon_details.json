@@ -1,0 +1,16 @@
+{
+  "height": "Height",
+  "weight": "Weight",
+  "stats": {
+    "title": "Stats",
+    "hp": "HP",
+    "attack": "Attack",
+    "defense": "Defense",
+    "specialAttack": "Sp Atk",
+    "specialDefense": "Sp Def",
+    "speed": "Speed"
+  },
+  "moves": {
+    "title": "Moves"
+  }
+}

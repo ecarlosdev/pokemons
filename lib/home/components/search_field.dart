@@ -1,5 +1,6 @@
 import 'package:assets/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
+import 'package:pokemons/i18n/translations.g.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
 
@@ -18,7 +19,7 @@ class SearchFieldComponent extends StatelessWidget {
       child: TextField(
         style: context.textStyle.field,
         decoration: InputDecoration(
-          hintText: 'Buscar',
+          hintText: texts.home.search,
           prefixIconConstraints: BoxConstraints(
             minWidth: 54.responsive(context),
           ),
