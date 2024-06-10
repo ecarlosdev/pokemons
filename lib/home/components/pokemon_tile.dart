@@ -52,6 +52,30 @@ class PokemonTileComponent extends StatelessWidget {
           ),
         ),
         Positioned(
+          bottom: _tileSafeArea,
+          right: _tileSafeArea,
+          child: Assets.icons.arrowRightRounded.svg(
+            width: 20.responsive(context),
+            height: 20.responsive(context),
+          ),
+        ),
+        Positioned(
+          bottom: _tileSafeArea,
+          left: _tileSafeArea,
+          child: Container(
+            constraints: BoxConstraints(
+              maxWidth: 200.responsive(context),
+            ),
+            child: Text(
+              pokemon.name.capitalize(),
+              style: context.textStyle.body.copyWith(
+                fontWeight: FontWeight.w700,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+          ),
+        ),
+        Positioned(
           top: 0,
           right: 0,
           left: 0,
@@ -85,30 +109,6 @@ class PokemonTileComponent extends StatelessWidget {
                 size: 20.responsive(context),
               );
             },
-          ),
-        ),
-        Positioned(
-          bottom: _tileSafeArea,
-          right: _tileSafeArea,
-          child: Assets.icons.arrowRightRounded.svg(
-            width: 20.responsive(context),
-            height: 20.responsive(context),
-          ),
-        ),
-        Positioned(
-          bottom: _tileSafeArea,
-          left: _tileSafeArea,
-          child: Container(
-            constraints: BoxConstraints(
-              maxWidth: 200.responsive(context),
-            ),
-            child: Text(
-              pokemon.name.capitalize(),
-              style: context.textStyle.body.copyWith(
-                fontWeight: FontWeight.w700,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
           ),
         ),
       ],
