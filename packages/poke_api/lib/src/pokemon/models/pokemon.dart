@@ -3,7 +3,7 @@ import 'package:poke_api/src/shared/shared.dart';
 
 class Pokemon extends ApiModel {
   final List<Ability> abilities;
-  final int baseExperience;
+  final int? baseExperience;
   final Cries cries;
   final List<NamedApiResource> forms;
   final List<GameIndex> gameIndices;
@@ -92,8 +92,8 @@ class Ability {
 }
 
 class Cries {
-  final String latest;
-  final String legacy;
+  final String? latest;
+  final String? legacy;
 
   Cries({
     required this.latest,
@@ -277,13 +277,13 @@ class Other {
 }
 
 class Sprites {
-  final String backDefault;
+  final String? backDefault;
   final String? backFemale;
-  final String backShiny;
+  final String? backShiny;
   final String? backShinyFemale;
-  final String frontDefault;
+  final String? frontDefault;
   final String? frontFemale;
-  final String frontShiny;
+  final String? frontShiny;
   final String? frontShinyFemale;
   final Other? other;
   final Versions? versions;
@@ -357,12 +357,12 @@ class GenerationI {
 }
 
 class RedBlue {
-  final String backDefault;
-  final String backGray;
-  final String backTransparent;
-  final String frontDefault;
-  final String frontGray;
-  final String frontTransparent;
+  final String? backDefault;
+  final String? backGray;
+  final String? backTransparent;
+  final String? frontDefault;
+  final String? frontGray;
+  final String? frontTransparent;
 
   RedBlue({
     required this.backDefault,
@@ -417,14 +417,14 @@ class GenerationIi {
 }
 
 class Crystal {
-  final String backDefault;
-  final String backShiny;
-  final String backShinyTransparent;
-  final String backTransparent;
-  final String frontDefault;
-  final String frontShiny;
-  final String frontShinyTransparent;
-  final String frontTransparent;
+  final String? backDefault;
+  final String? backShiny;
+  final String? backShinyTransparent;
+  final String? backTransparent;
+  final String? frontDefault;
+  final String? frontShiny;
+  final String? frontShinyTransparent;
+  final String? frontTransparent;
 
   Crystal({
     required this.backDefault,
@@ -461,10 +461,10 @@ class Crystal {
 }
 
 class Gold {
-  final String backDefault;
-  final String backShiny;
-  final String frontDefault;
-  final String frontShiny;
+  final String? backDefault;
+  final String? backShiny;
+  final String? frontDefault;
+  final String? frontShiny;
   final String? frontTransparent;
 
   Gold({
@@ -517,8 +517,8 @@ class GenerationIii {
 }
 
 class OfficialArtwork {
-  final String frontDefault;
-  final String frontShiny;
+  final String? frontDefault;
+  final String? frontShiny;
 
   OfficialArtwork({
     required this.frontDefault,
@@ -538,9 +538,9 @@ class OfficialArtwork {
 }
 
 class Home {
-  final String frontDefault;
+  final String? frontDefault;
   final String? frontFemale;
-  final String frontShiny;
+  final String? frontShiny;
   final String? frontShinyFemale;
 
   Home({
@@ -586,7 +586,7 @@ class GenerationVii {
 }
 
 class DreamWorld {
-  final String frontDefault;
+  final String? frontDefault;
   final dynamic frontFemale;
 
   DreamWorld({

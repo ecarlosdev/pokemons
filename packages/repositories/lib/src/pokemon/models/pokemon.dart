@@ -36,7 +36,9 @@ class Pokemon {
       moves: pokemon.moves.map((m) => PokemonMove(name: m.move.name)).toList(),
       assets: PokemonAssets(
         image: pokemon.sprites.other?.officialArtwork.frontDefault ??
-            pokemon.sprites.frontDefault,
+            pokemon.sprites.frontDefault ??
+            pokemon.sprites.other?.dreamWorld.frontDefault ??
+            '',
       ),
       weight: pokemon.weight,
       height: pokemon.height,
