@@ -1,5 +1,7 @@
+import 'package:fuzzywuzzy/fuzzywuzzy.dart';
 import 'package:poke_api/poke_api.dart' as poke_api;
 import 'package:repositories/src/pokemon/pokemon.dart';
+import 'package:repositories/src/pokemon/utils/pokemon_names.dart';
 
 /// Repository of Pokemon.
 class PokemonRepository {
@@ -43,5 +45,16 @@ class PokemonRepository {
       return null;
     }
     return Pokemon.fromApiModel(response);
+  }
+
+  Future<List<Pokemon>> search(String search) async {
+    final similarNames = extractTop(
+      query: search,
+      choices: pokemonNames,
+      limit: 20,
+      cutoff: 60,
+    ).map((e) => e.choice).toList();
+    final response = await _pokeApi.pokemon.byNameList(similarNames);
+    return response.map(Pokemon.fromApiModel).toList();
   }
 }

@@ -1,66 +1,37 @@
-import 'package:assets/gen/assets.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokemons/home/components/components.dart';
-import 'package:pokemons/home/states/states.dart';
-import 'package:pokemons/i18n/translations.g.dart';
+import 'package:pokemons/search/components/components.dart';
+import 'package:pokemons/search/states/states.dart';
 import 'package:pokemons/shared/widgets/widgets.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class SearchPage extends StatelessWidget {
+  const SearchPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomePokemonListCubit(
+      create: (context) => SearchCubit(
         pokemonRepository: context.read(),
         favoritesRepositories: context.read(),
-      )..load(),
-      child: const HomePageView(),
+      ),
+      child: const SearchPageView(),
     );
   }
 }
 
-class HomePageView extends StatefulWidget {
-  const HomePageView({super.key});
+class SearchPageView extends StatefulWidget {
+  const SearchPageView({super.key});
 
   @override
-  State<HomePageView> createState() => _HomePageViewState();
+  State<SearchPageView> createState() => _SearchPageViewState();
 }
 
-class _HomePageViewState extends State<HomePageView> {
-  late final ScrollController scrollController = ScrollController()
-    ..addListener(listener);
-
-  void listener() {
-    final listCubit = context.read<HomePokemonListCubit>();
-    final offsetPosition = scrollController.offset + 75 >=
-        scrollController.position.maxScrollExtent;
-    final outOfRange = scrollController.position.outOfRange;
-    final loadingMore =
-        listCubit.state.loadNextStatus == LoadNextStatus.loading;
-    if (offsetPosition && !outOfRange && !loadingMore) {
-      listCubit.loadNext();
-    }
-  }
-
+class _SearchPageViewState extends State<SearchPageView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        leading: Center(
-          child: Assets.icons.hamburgerMenu.svg(
-            width: 26.responsive(context),
-            height: 18.responsive(context),
-          ),
-        ),
-        actions: const [
-          UserButtonComponent(),
-        ],
-      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return Stack(
@@ -81,21 +52,11 @@ class _HomePageViewState extends State<HomePageView> {
                   size: 184.responsive(context),
                 ),
               ),
-              BlocBuilder<HomePokemonListCubit, HomePokemonListState>(
+              BlocBuilder<SearchCubit, SearchState>(
                 builder: (context, state) {
                   return CustomScrollView(
-                    controller: scrollController,
                     slivers: [
-                      SliverToBoxAdapter(
-                        child: Padding(
-                          padding: EdgeInsets.all(context.sizes.bodySafeArea),
-                          child: Text(
-                            texts.home.findYourPokemon,
-                            style: context.textStyle.headLine,
-                          ),
-                        ),
-                      ),
-                      if (state.status == HomePokemonListStatus.error)
+                      if (state.status == SearchStatus.error)
                         SliverFillRemaining(
                           child: Center(
                             child: MaterialButton(
@@ -107,13 +68,27 @@ class _HomePageViewState extends State<HomePageView> {
                       SliverMainAxisGroup(
                         slivers: [
                           SliverAppBar(
-                            floating: true,
-                            backgroundColor: context.colors.background,
                             title: const SearchFieldComponent(),
                             centerTitle: false,
+                            pinned: true,
                             toolbarHeight: 65.responsive(context),
+                            leading: Padding(
+                              padding: EdgeInsets.only(
+                                left: 10.responsive(context),
+                              ),
+                              child: IconButton(
+                                icon: Icon(
+                                  Icons.arrow_back,
+                                  size: 36.responsive(context),
+                                ),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ),
+                            leadingWidth: 50.responsive(context),
                           ),
-                          if (state.status == HomePokemonListStatus.loaded)
+                          if (state.status == SearchStatus.loaded)
                             SliverPadding(
                               padding: EdgeInsets.all(
                                 context.sizes.bodySafeArea,
@@ -139,7 +114,7 @@ class _HomePageViewState extends State<HomePageView> {
                             ),
                         ],
                       ),
-                      if (state.status == HomePokemonListStatus.loading)
+                      if (state.status == SearchStatus.loading)
                         SliverPadding(
                           padding: EdgeInsets.all(
                             context.sizes.bodySafeArea,
@@ -159,22 +134,6 @@ class _HomePageViewState extends State<HomePageView> {
                               return const BluredContainerWidget();
                             },
                             itemCount: 10,
-                          ),
-                        ),
-                      if (state.loadNextStatus == LoadNextStatus.loading)
-                        SliverToBoxAdapter(
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              bottom: MediaQuery.of(context).padding.bottom +
-                                  context.sizes.bodySafeArea,
-                            ),
-                            child: Center(
-                              child: CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation(
-                                  context.colors.onBackground,
-                                ),
-                              ),
-                            ),
                           ),
                         ),
                     ],
