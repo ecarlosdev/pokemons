@@ -4,6 +4,7 @@ import 'package:pokemons/i18n/translations.g.dart';
 import 'package:pokemons/pokemon_detail/components/components.dart';
 import 'package:pokemons/pokemon_detail/states/pokemon_details/pokemon_details.dart';
 import 'package:pokemons/shared/shared.dart';
+import 'package:pokemons/shared/utils/pokemon_type_colors.dart';
 import 'package:pokemons/shared/utils/string_utils.dart';
 import 'package:responsive/responsive.dart';
 import 'package:theme/theme.dart';
@@ -74,21 +75,33 @@ class _PokemonDetailPageState extends State<PokemonDetailPage>
               Positioned(
                 top: constraints.maxHeight * 0.17,
                 left: constraints.maxWidth * 0.35,
-                child: ColoredBluredCircleWidget(
-                  color: const Color(0xFFF1C346),
-                  blurRadius: 240,
-                  spreadRadius: 30,
-                  size: 87.responsive(context),
+                child: BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
+                  builder: (context, state) {
+                    final color = state.pokemon?.types.first.colors.secondary ??
+                        Colors.transparent;
+                    return ColoredBluredCircleWidget(
+                      color: color,
+                      blurRadius: 240,
+                      spreadRadius: 30,
+                      size: 87.responsive(context),
+                    );
+                  },
                 ),
               ),
               Positioned(
-                top: constraints.maxHeight * 0.74,
+                top: constraints.maxHeight * 0.76,
                 left: constraints.maxWidth * 0.7,
-                child: ColoredBluredCircleWidget(
-                  color: const Color(0xFF82B8CA),
-                  blurRadius: 210,
-                  spreadRadius: 10,
-                  size: 184.responsive(context),
+                child: BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
+                  builder: (context, state) {
+                    final color = state.pokemon?.types.first.colors.secondary ??
+                        Colors.transparent;
+                    return ColoredBluredCircleWidget(
+                      color: color,
+                      blurRadius: 210,
+                      spreadRadius: 10,
+                      size: 184.responsive(context),
+                    );
+                  },
                 ),
               ),
               Padding(
