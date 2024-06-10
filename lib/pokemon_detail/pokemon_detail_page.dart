@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokemons/i18n/translations.g.dart';
@@ -73,23 +75,29 @@ class _PokemonDetailPageState extends State<PokemonDetailPage>
           return Stack(
             children: [
               Positioned(
-                top: constraints.maxHeight * 0.17,
-                left: constraints.maxWidth * 0.35,
+                top: context.screenType == ScreenType.xsmall
+                    ? constraints.maxHeight * 0.1
+                    : constraints.maxHeight * 0.17,
+                left: context.screenType == ScreenType.xsmall
+                    ? constraints.maxWidth * 0.41
+                    : constraints.maxWidth * 0.35,
                 child: BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
                   builder: (context, state) {
                     final color = state.pokemon?.types.first.colors.secondary ??
                         Colors.transparent;
                     return ColoredBluredCircleWidget(
                       color: color,
-                      blurRadius: 240,
-                      spreadRadius: 30,
+                      blurRadius: Platform.isAndroid ? 500 : 240,
+                      spreadRadius: Platform.isAndroid ? 50 : 30,
                       size: 87.responsive(context),
                     );
                   },
                 ),
               ),
               Positioned(
-                top: constraints.maxHeight * 0.76,
+                top: context.screenType == ScreenType.xsmall
+                    ? constraints.maxHeight * 0.70
+                    : constraints.maxHeight * 0.75,
                 left: constraints.maxWidth * 0.7,
                 child: BlocBuilder<PokemonDetailsCubit, PokemonDetailsState>(
                   builder: (context, state) {
@@ -97,35 +105,40 @@ class _PokemonDetailPageState extends State<PokemonDetailPage>
                         Colors.transparent;
                     return ColoredBluredCircleWidget(
                       color: color,
-                      blurRadius: 210,
-                      spreadRadius: 10,
-                      size: 184.responsive(context),
+                      blurRadius: Platform.isAndroid ? 500 : 210,
+                      spreadRadius: Platform.isAndroid ? 20 : 10,
+                      size: context.screenType == ScreenType.xsmall
+                          ? 120.responsive(context)
+                          : 184.responsive(context),
                     );
                   },
                 ),
               ),
               Padding(
                 padding: EdgeInsets.all(context.sizes.bodySafeArea).copyWith(
-                  top: 50.responsive(context),
-                  bottom: 50.responsive(context),
+                  top: context.screenType == ScreenType.xsmall
+                      ? 20.responsive(context)
+                      : 45.responsive(context),
+                  bottom: context.screenType == ScreenType.xsmall
+                      ? 20.responsive(context)
+                      : 45.responsive(context),
                 ),
                 child: Column(
                   children: [
-                    const Expanded(
-                      flex: 4,
+                    const SizedBox(
                       child: PokemonCardImageComponent(
                         width: double.infinity,
                       ),
                     ),
                     PokemonInfoComponent(
                       margin: EdgeInsets.symmetric(
-                        vertical: 20.responsive(context),
+                        vertical: context.screenType == ScreenType.xsmall
+                            ? 5.responsive(context)
+                            : 5.responsive(context),
                       ),
                     ),
                     TabBar(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 20.responsive(context),
-                      ),
+                      padding: EdgeInsets.only(bottom: 25.responsive(context)),
                       controller: tabController,
                       indicatorWeight: 5,
                       indicatorSize: TabBarIndicatorSize.label,
@@ -145,8 +158,8 @@ class _PokemonDetailPageState extends State<PokemonDetailPage>
                         ),
                       ],
                     ),
-                    Expanded(
-                      flex: 3,
+                    SizedBox(
+                      height: context.heightPercent(0.25),
                       child: TabBarView(
                         controller: tabController,
                         physics: const NeverScrollableScrollPhysics(),

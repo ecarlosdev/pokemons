@@ -23,6 +23,10 @@ class $AssetsIconsGen {
   SvgGenImage get favoriteFilled =>
       const SvgGenImage('assets/icons/favorite-filled.svg');
 
+  /// File path: assets/icons/favorite-sm.svg
+  SvgGenImage get favoriteSm =>
+      const SvgGenImage('assets/icons/favorite-sm.svg');
+
   /// File path: assets/icons/favorite.svg
   SvgGenImage get favorite => const SvgGenImage('assets/icons/favorite.svg');
 
@@ -34,8 +38,14 @@ class $AssetsIconsGen {
   SvgGenImage get search => const SvgGenImage('assets/icons/search.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [arrowRightRounded, favoriteFilled, favorite, hamburgerMenu, search];
+  List<SvgGenImage> get values => [
+        arrowRightRounded,
+        favoriteFilled,
+        favoriteSm,
+        favorite,
+        hamburgerMenu,
+        search
+      ];
 }
 
 class $AssetsImagesGen {

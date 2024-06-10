@@ -24,6 +24,8 @@ class FavoriteButtonComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final favoriteIcon =
+        size > 24 ? Assets.icons.favorite : Assets.icons.favoriteSm;
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -38,7 +40,7 @@ class FavoriteButtonComponent extends StatelessWidget {
                   BlendMode.srcIn,
                 ),
               )
-            : Assets.icons.favorite.svg(
+            : favoriteIcon.svg(
                 width: size,
                 height: size,
               ),

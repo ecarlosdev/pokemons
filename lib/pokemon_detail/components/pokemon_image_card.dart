@@ -21,7 +21,7 @@ class PokemonCardImageComponent extends StatelessWidget {
       builder: (context, state) {
         final image = state.pokemon?.assets.image;
         return BluredContainerWidget(
-          height: 316.responsive(context),
+          height: context.heightPercent(0.32),
           width: width,
           margin: margin,
           borderRadius: BorderRadius.circular(30),

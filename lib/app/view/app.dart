@@ -30,6 +30,7 @@ class App extends StatelessWidget {
         ),
       ],
       child: ResponsiveConfiguration(
+        xsmallDesignSize: const Size(428, 926),
         smallDesignSize: const Size(428, 926),
         mediumDesignSize: const Size(768, 1024),
         largeDesignSize: const Size(1440, 1024),

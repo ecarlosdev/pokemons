@@ -16,6 +16,8 @@ extension ResponsiveSize on num {
     final screenShortestSide = MediaQuery.of(context).size.shortestSide;
     final screenType = context.screenType;
     switch (screenType) {
+      case ScreenType.xsmall:
+        return screenShortestSide / responsive.xsmallDesignSize.shortestSide;
       case ScreenType.small:
         return screenShortestSide / responsive.smallDesignSize.shortestSide;
       case ScreenType.medium:

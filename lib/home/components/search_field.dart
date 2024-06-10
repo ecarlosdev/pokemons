@@ -17,7 +17,6 @@ class SearchFieldComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        print('SearchFieldComponent.onTap');
         SearchRoute(context: context).push();
       },
       behavior: HitTestBehavior.opaque,

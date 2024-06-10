@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class ColoredBluredCircleWidget extends StatelessWidget {
@@ -26,7 +28,7 @@ class ColoredBluredCircleWidget extends StatelessWidget {
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: color,
+            color: Platform.isAndroid ? color.withAlpha(80) : color,
             blurRadius: blurRadius ?? size / 2,
             spreadRadius: spreadRadius ?? 45,
           ),

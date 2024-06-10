@@ -4,12 +4,16 @@ import 'package:flutter/widgets.dart';
 class ResponsiveConfiguration extends InheritedWidget {
   /// Creates a new [ResponsiveConfiguration] widget.
   const ResponsiveConfiguration({
+    required this.xsmallDesignSize,
     required this.smallDesignSize,
     required this.mediumDesignSize,
     required this.largeDesignSize,
     required super.child,
     super.key,
   });
+
+  /// The design size for extra small devices.
+  final Size xsmallDesignSize;
 
   /// The design size for mobile devices.
   final Size smallDesignSize;
