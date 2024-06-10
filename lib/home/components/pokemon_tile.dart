@@ -24,24 +24,18 @@ class PokemonTileComponent extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        GestureDetector(
-          onTap: PokemonDetailRoute(
-            context: context,
-            pokemon: pokemon,
-          ).push,
-          child: Container(
-            padding: const EdgeInsets.all(_tileSafeArea),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(10),
-              gradient: LinearGradient(
-                colors: [
-                  pokemon.colors.primary,
-                  pokemon.colors.primary.withOpacity(0.7),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
+        Container(
+          padding: const EdgeInsets.all(_tileSafeArea),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(10),
+            gradient: LinearGradient(
+              colors: [
+                pokemon.colors.primary,
+                pokemon.colors.primary.withOpacity(0.7),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
           ),
         ),
@@ -54,6 +48,19 @@ class PokemonTileComponent extends StatelessWidget {
             width: 135.responsive(context),
             height: 135.responsive(context),
             fit: BoxFit.fitHeight,
+          ),
+        ),
+        Positioned(
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: PokemonDetailRoute(
+              context: context,
+              pokemon: pokemon,
+            ).push,
           ),
         ),
         Positioned(
