@@ -51,9 +51,24 @@ class $AssetsIconsGen {
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
+  /// Directory path: assets/images/placeholder
+  $AssetsImagesPlaceholderGen get placeholder =>
+      const $AssetsImagesPlaceholderGen();
+
   /// Directory path: assets/images/pokemon_types
   $AssetsImagesPokemonTypesGen get pokemonTypes =>
       const $AssetsImagesPokemonTypesGen();
+}
+
+class $AssetsImagesPlaceholderGen {
+  const $AssetsImagesPlaceholderGen();
+
+  /// File path: assets/images/placeholder/user-circle.png
+  AssetGenImage get userCircle =>
+      const AssetGenImage('assets/images/placeholder/user-circle.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [userCircle];
 }
 
 class $AssetsImagesPokemonTypesGen {
