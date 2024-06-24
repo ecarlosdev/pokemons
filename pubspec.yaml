@@ -22,7 +22,7 @@ dependencies:
   responsive:
     path: packages/responsive
   shared_preferences: ^2.2.3
-  slang: ^3.31.0
+  slang: ^3.31.1
   slang_flutter: ^3.31.0
   theme:
     path: packages/theme
