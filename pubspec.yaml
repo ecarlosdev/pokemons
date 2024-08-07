@@ -29,7 +29,7 @@ dependencies:
 
 dev_dependencies:
   bloc_test: ^9.1.6
-  build_runner: ^2.4.11
+  build_runner: ^2.4.12
   flutter_test:
     sdk: flutter
   slang_build_runner: ^3.31.0
